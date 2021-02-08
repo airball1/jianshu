@@ -4,6 +4,9 @@ import { GlobalStyleFont } from './statics/iconfont/iconfont.js';
 import Header from './common/header';
 import store from './store';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Detail from './pages/detail';
 
 class App extends Component {
   render() {
@@ -13,7 +16,15 @@ class App extends Component {
         <GlobalStyle />
         <GlobalStyleFont />
         <Provider store={store}>
-        	<Header />
+        	<div>
+	        	<Header />
+	        	<BrowserRouter>
+	        		<div>
+		        		<Route path= '/' exact component={Home}></Route>
+		        		<Route path= '/detail' exact component={Detail}></Route>
+	        		</div>
+	        	</BrowserRouter>
+        	</div>
         </Provider>
       </React.Fragment>
     );
