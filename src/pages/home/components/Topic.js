@@ -8,17 +8,16 @@ class Topic extends Component {
 		return (
 			<TopicWrapper>
 				{
-					list.map((item) => {
-						return (
-							<TopicItem key={item.get('id')}>
-								<img 
-									className='topic-pic'
-									src={item.get('imgUrl')}
-								/>
-								{item.get('title')}
-							</TopicItem>
-						)
-					})
+					list.map((item) => (
+						<TopicItem key={item.get('id')}>
+							<img 
+								className='topic-pic'
+								src={item.get('imgUrl')}
+								alt=''
+							/>
+							{item.get('title')}
+						</TopicItem>
+					))
 				}
 			</TopicWrapper>
 		)
@@ -26,7 +25,7 @@ class Topic extends Component {
 }
 
 const mapState = (state) => ({
-	list: state.get('home').get('topicList')
+	list: state.getIn(['home', 'topicList'])
 });
 
 export default connect(mapState, null)(Topic);
